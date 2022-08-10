@@ -19,16 +19,16 @@ function Navigation () {
                 <a className="nav-link  active" href="/">Home</a>
               </li>
               <li className="nav-item hover-action " >
-                <a className="nav-link " href="/about">Dependencies</a>
+                <a className="nav-link " href="/dependency">Dependencies</a>
               </li>
               <li className="nav-item hover-action " >
-                <a className="nav-link " href="/shop">Explanation</a>
+                <a className="nav-link " href="/explanation">Explanation</a>
               </li>
               <li className="nav-item hover-action ">
-                <a className="nav-link" href="#contact">Demostration</a>
+                <a className="nav-link" href="/demostration">Demostration</a>
               </li>
               <li className="nav-item hover-action ">
-                <a className="nav-link" href="#FaceBook">Github</a>
+                <a className="nav-link" href="https://github.com/JMagic-Learner/ToDo-Mock-API">Github</a>
               </li>
             </ul>
           </div>
