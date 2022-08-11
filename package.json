@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "npm run test",
-    "start": "cd server && npm run start ",
-    "parallel": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "server": "cd server && npm run start ",
+    "start": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "predeploy": "npm run build",
      "deploy": "gh-pages -d build"

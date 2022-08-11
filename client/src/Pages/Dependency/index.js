@@ -7,6 +7,11 @@ function Dependency() {
             name: "concurrently",
             version: "7.3.0",
             description: "A NPM Package that allows the user to run multiple CLI / Scripts at the same time"
+        },
+        {
+            name: "gh-pages",
+            version: "4.0.0",
+            description: "A NPM Package that allows the user deploy to github pages"
         }
     ]
 
