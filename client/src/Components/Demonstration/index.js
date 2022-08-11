@@ -207,7 +207,7 @@ function Demonstration() {
     return (
         <section className="demonstration-container">
             <h2> ToDo API - Returned Data </h2>
-            <form className="todo-container" onSubmit={handleFormSubmit}>
+            <form className="search-container" onSubmit={handleFormSubmit}>
                 <div class="input-group mb-3 d-flex">
                     <span className="input-group-text" id="basic-addon1">Task Name:</span>
                     <input type='text'
@@ -226,8 +226,6 @@ function Demonstration() {
                         onClick={actionGET}> SEARCH BY ID </button>
                 </div>
             </form>
-            <section >
-            </section>
 
             <div className="CRUD-Operations" >
                 <button type="submit"
@@ -245,24 +243,31 @@ function Demonstration() {
                     Edit a Task
                 </button>
             </div>
+            <br></br>
             <section className='todo-container'>
+                
                 {fufilled.map((item) => {
                     return (
-                        <div className="todo-items border rounded">
-                            <p className="text-black"> ID: {item.id}   </p>
-                            <p className="text-black"> Time: {item.timeNeeded}   </p>
-                            <p className="text-black"> Name: {item.name}   </p>
-                            <button className="btn btn-secondary" value={item.id} type="submit" onClick={actionDELETE}> DELETE </button>
-                            <button className="btn btn-secondary"
+                        
+                        <div className="card todo-items" >
+                            <div className="card-body">
+                                <h5 className="card-title">Task ID: {item.id}</h5>
+                                <h6 className="card-subtitle mb-2 text-muted">Task Name: {item.name}</h6>
+                                <p className="card-text"> {item.timeNeeded} minutes is needed to complete this task</p>
+                                <button className="btn btn-secondary CRUD-Button" value={item.id} type="submit" onClick={actionDELETE}> DELETE </button>
+                                <button className="btn btn-secondary CRUD-Button"
                                 value={item.id}
                                 type="submit"
                                 onClick={actionPUT}
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModal"
                             > EDIT </button>
+                            </div>
                         </div>
+                      
                     )
                 })}
+
             </section>
 
 

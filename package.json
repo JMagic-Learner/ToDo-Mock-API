@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "This is a project to demonstrate creating an API via express and node.js",
   "main": "index.js",
+  "private": false,
   "dependencies": {
     "concurrently": "^7.3.0"
   },
   "scripts": {
     "test": "npm run test",
     "start": "cd server && npm run start ",
-    "parallel": "concurrently \"cd server && npm run start\" \"cd client && npm start\""
+    "parallel": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "predeploy": "npm run build",
+     "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -26,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/JMagic-Learner/ToDo-Mock-API/issues"
   },
-  "homepage": "https://github.com/JMagic-Learner/ToDo-Mock-API#readme"
+  "homepage": "https://github.com/JMagic-Learner.github.io/ToDo-Mock-API",
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
 }
