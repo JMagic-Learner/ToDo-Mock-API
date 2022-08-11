@@ -4,11 +4,13 @@ const app = express();
 const path = require('path');
 const cors = require('cors');
 const data = require('./data/db.js')
+
 let drilledData = data.todo
 app.use(cors({
     origin: 'http://localhost:3000'
   }));
 app.use(express.json());
+
 
 app.get('*', (req, res) => {
   if (req) {
@@ -95,9 +97,6 @@ app.put('/api/todos/:id/', (req,res)=> {
     }
     
 })
-
-
-
 
 
 // ENV variables 

@@ -128,17 +128,9 @@ function Demonstration() {
 
     }
 
-    const actionClear = (event) => {
-        event.preventDefault()
-        console.log("clearing search")
-        setSearchID(0)
-        setSingle([])
-        setHTTPMethod("CLEAR")
-    }
-
     const postRequest = async () => {
         console.log("TASKNAME: ", taskName, "TIME: ", time, " HTTPMethod: ", HTTPMethod)
-        const postSebnd = await fetch('http://localhost:4000/api/todos', {
+        await fetch('http://localhost:4000/api/todos', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -157,7 +149,7 @@ function Demonstration() {
 
     const deleteRequest = async () => {
         console.log("DELETE BY ID", DeleteId)
-        const postSebnd = await fetch(`http://localhost:4000/api/todos/${DeleteId}`, {
+        await fetch(`http://localhost:4000/api/todos/${DeleteId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
         }).then(function (response) {
@@ -171,7 +163,7 @@ function Demonstration() {
 
     const putRequest = async () => {
         console.log("IUD: ", update, "UPDATED TASKNAME: ", updateName, "UPDATED TIME", updateTime);
-        const postSebnd = await fetch(`http://localhost:4000/api/todos/${update}`, {
+        await fetch(`http://localhost:4000/api/todos/${update}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -191,7 +183,7 @@ function Demonstration() {
 
     const getRequest = async () => {
         console.log("ID: ", searchID);
-        const postSebnd = await fetch(`http://localhost:4000/api/todos/${searchID}`, {
+        await fetch(`http://localhost:4000/api/todos/${searchID}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         }).then(function (response) {
@@ -249,7 +241,7 @@ function Demonstration() {
                 {fufilled.map((item) => {
                     return (
 
-                        <div className="card todo-items" >
+                        <div className="card todo-items todo-item" >
                             <div className="card-body">
                                 <h5 className="card-title">Task ID: {item.id}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Task Name: {item.name}</h6>

@@ -20,9 +20,8 @@ function App() {
       <BrowserRouter>
       <Navigation/>
       <Routes>
-            <Route exact path="/" element={<Home />}/>
+            <Route exact path="/" element={<Demo/>}/>
             <Route exact path="/explanation" element={<Explanation />}/>
-            <Route exact path="/demostration" element={<Demo/>}/>
             <Route exact path="/dependency" element={<Dependency/>}/>
        </Routes>
        </BrowserRouter>

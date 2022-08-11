@@ -16,16 +16,13 @@ function Navigation () {
           <div className="navbar-collapse collapse justify-content-end  " id="navbarDefault">
             <ul className="navbar-nav">
               <li className="nav-item hover-action ">
-                <a className="nav-link  active" href="/">Home</a>
+                <a className="nav-link  active" href="/">Demonstration</a>
               </li>
               <li className="nav-item hover-action " >
                 <a className="nav-link " href="/dependency">Dependencies</a>
               </li>
               <li className="nav-item hover-action " >
                 <a className="nav-link " href="/explanation">Explanation</a>
-              </li>
-              <li className="nav-item hover-action ">
-                <a className="nav-link" href="/demostration">Demostration</a>
               </li>
               <li className="nav-item hover-action ">
                 <a className="nav-link" href="https://github.com/JMagic-Learner/ToDo-Mock-API">Github</a>
