@@ -245,26 +245,30 @@ function Demonstration() {
             </div>
             <br></br>
             <section className='todo-container'>
-                
+
                 {fufilled.map((item) => {
                     return (
-                        
+
                         <div className="card todo-items" >
                             <div className="card-body">
                                 <h5 className="card-title">Task ID: {item.id}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Task Name: {item.name}</h6>
                                 <p className="card-text"> {item.timeNeeded} minutes is needed to complete this task</p>
-                                <button className="btn btn-secondary CRUD-Button" value={item.id} type="submit" onClick={actionDELETE}> DELETE </button>
-                                <button className="btn btn-secondary CRUD-Button"
-                                value={item.id}
-                                type="submit"
-                                onClick={actionPUT}
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                            > EDIT </button>
+                                <div className="CRUD-Operations" >
+                                    <form onSubmit={handleFormSubmit}>
+                                        <button className="btn btn-secondary CRUD-Delete" value={item.id} type="submit" onClick={actionDELETE}> DELETE </button>
+                                    </form>
+                                    <button className="btn btn-secondary CRUD-Edit"
+                                        value={item.id}
+                                        type="submit"
+                                        onClick={actionPUT}
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"
+                                    > EDIT </button>
+                                </div>
                             </div>
                         </div>
-                      
+
                     )
                 })}
 
@@ -373,59 +377,59 @@ function Demonstration() {
                                 {single.map((item) => {
                                     return (
                                         <div>
-                                        <div className="modal-body d-flex" >
-                                            <div className="input-group mb-3">
-                                            <span className="input-group-text" id="basic-addon1">ID</span>
-                                            <input type='text'
-                                            className="form-control"
-                                            aria-label="TaskName"
-                                            aria-describedby="basic-addon1"
-                                            
-                                            value={item.id}
-                                            >
-                                        </input>
-                                            
+                                            <div className="modal-body d-flex" >
+                                                <div className="input-group mb-3">
+                                                    <span className="input-group-text" id="basic-addon1">ID</span>
+                                                    <input type='text'
+                                                        className="form-control"
+                                                        aria-label="TaskName"
+                                                        aria-describedby="basic-addon1"
+
+                                                        value={item.id}
+                                                    >
+                                                    </input>
+
+                                                </div>
+                                            </div>
+                                            <div className="modal-body d-flex" >
+                                                <div className="input-group mb-3">
+                                                    <span className="input-group-text" id="basic-addon1">Task Name</span>
+                                                    <input type='text'
+                                                        className="form-control"
+                                                        aria-label="TaskName"
+                                                        aria-describedby="basic-addon1"
+
+                                                        value={item.name}
+                                                    >
+                                                    </input>
+                                                </div>
+                                            </div>
+                                            <div className="modal-body d-flex" >
+                                                <div className="input-group mb-3">
+                                                    <span className="input-group-text" id="basic-addon1">Time to complete</span>
+                                                    <input type='text'
+                                                        className="form-control"
+                                                        aria-label="TaskName"
+                                                        aria-describedby="basic-addon1"
+
+                                                        value={item.timeNeeded}
+                                                    >
+                                                    </input>
+                                                </div>
                                             </div>
                                         </div>
-                                         <div className="modal-body d-flex" >
-                                         <div className="input-group mb-3">
-                                         <span className="input-group-text" id="basic-addon1">Task Name</span>
-                                         <input type='text'
-                                            className="form-control"
-                                            aria-label="TaskName"
-                                            aria-describedby="basic-addon1"
-                                            
-                                            value={item.name}
-                                            >
-                                        </input>
-                                         </div>
-                                     </div>
-                                     <div className="modal-body d-flex" >
-                                         <div className="input-group mb-3">
-                                         <span className="input-group-text" id="basic-addon1">Time to complete</span>
-                                         <input type='text'
-                                            className="form-control"
-                                            aria-label="TaskName"
-                                            aria-describedby="basic-addon1"
-                                            
-                                            value={item.timeNeeded}
-                                            >
-                                        </input>
-                                         </div>
-                                     </div>
-                                     </div>
                                     )
                                 })}
                             </div>)}
 
 
                         <div className="modal-footer">
-                        {HTTPMethod !== "GET" && (
-                            <div>
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                            <button type="submit" className="btn btn-primary">Save changes</button>
-                            </div>
-                        )}
+                            {HTTPMethod !== "GET" && (
+                                <div>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                                    <button type="submit" className="btn btn-primary">Save changes</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

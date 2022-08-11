@@ -66,6 +66,16 @@
   width:40%;
   margin:auto;
 }
+
+.CRUD-Delete{
+  width:100px;
+  margin-left:20px;
+}
+
+.CRUD-Edit{
+  width:100px;
+  margin:auto;
+}
 .search-result{
   width:850px;
   margin:auto;

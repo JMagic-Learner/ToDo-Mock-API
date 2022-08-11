@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const path = require('path');
 const cors = require('cors');
 const data = require('./data/db.js')
 let drilledData = data.todo
@@ -9,15 +10,14 @@ app.use(cors({
   }));
 app.use(express.json());
 
-// HTTPS requests
-// app.get()
-// app.post()
-// app.put()
-// app.delete()
-
-app.get('/', (req,res) => {
-    // this is a route handler
-    res.send('Hello World!');
+app.get('*', (req, res) => {
+  if (req) {
+    console.log("A request has been sent");
+  }
+  if (res) {
+    console.log("A response has been generated");
+  }
+  res.sendFile(path.join(__dirname, '../client/build'));
 });
 
 app.get('/api/todos', (req,res) => {
@@ -95,6 +95,10 @@ app.put('/api/todos/:id/', (req,res)=> {
     }
     
 })
+
+
+
+
 
 // ENV variables 
 const port = process.env.PORT || 4000;
