@@ -1,13 +1,13 @@
-const http = require("http");
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const data = require('./data/db.js')
-const drilledData = data.todo
-app.use(express.json());
+let drilledData = data.todo
 app.use(cors({
     origin: 'http://localhost:3000'
   }));
+app.use(express.json());
 
 // HTTPS requests
 // app.get()
@@ -28,11 +28,6 @@ app.get('/api/todos', (req,res) => {
 app.post('/api/todos', (req,res) => {
     console.log("We are attempting to post a new task to ToDo")
     // The end client is going to define the request body.
-    if (!req.body.name || !req.body.timeNeeded){
-        res.status(400).send("Name and/or timeNeeded is not specified")
-        return;
-    }
-    
     const todo = {
         id: drilledData.length,
         name: req.body.name,
@@ -40,28 +35,65 @@ app.post('/api/todos', (req,res) => {
     };
     drilledData.push(todo);
     res.send(drilledData)
+
+    if (!req.body.name || !req.body.timeNeeded){
+        res.status(400).send("Name and/or timeNeeded is not specified")
+        return;
+    }
 })
 // get a single To Do via id
 app.get('/api/todos/:id/', (req,res)=> {
+
+    if (!req.params.id) {
+        res.status(400).send("We have not detected an ID")
+    } else {
     console.log("We are attempting to find the value of todo by id")
-    const pending = drilledData.find( item => item.id === parseInt(req.params.id));
-    if (!pending) {
-        res.status(404)
-    }
+    const pending = drilledData.filter( item => item.id === parseInt(req.params.id));
     res.send(pending)
+    }
+  
 })
 
 app.delete('/api/todos/:id/', (req,res)=> {
+    
+
+    if (drilledData.filter( item => item.id !== parseInt(req.params.id))) {
     console.log("We are attempting to delete the value of todo by id")
+    drilledData= drilledData.filter( item => item.id !== parseInt(req.params.id));
+    // THIS FOLLOWING CODE IS REQUIRED TO ADJUST THE ID, EVERY DELETE
+    drilledData.map((item,index)=>{
+        item.id=parseInt(index)
+    })
+    res.send(drilledData)
+    } else {
+    res.status(400).send("ID is not specified")
+    }
+
+})
+
+app.put('/api/todos/:id/', (req,res)=> {
+    console.log("We are attempting to update the value of todo by id")
+    console.log(req.params.id)
+    // const pending = drilledData.filter( item => item.id === parseInt(req.params.id));
+
+    if (drilledData.filter( item => item.id === parseInt(req.params.id))) {
+        console.log("We have detected a todo Item that matches the params.id");
+        drilledData.map((item)=>{
+            if (item.id== parseInt(req.body.id)) {
+                item.id=parseInt(req.body.id)
+                item.name=req.body.name
+                item.timeNeeded=req.body.timeNeeded
+                console.log("This is the new item", drilledData);
+            }
+        })
+        res.send(drilledData)
+    }
+
     if (!req.params.id){
         res.status(400).send("ID is not specified")
         return;
     }
-    const pending = drilledData.filter( item => item.id !== parseInt(req.params.id));
-    if (!pending) {
-        res.status(404)
-    }
-    res.send(pending)
+    
 })
 
 // ENV variables 
