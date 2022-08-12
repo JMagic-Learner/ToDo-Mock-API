@@ -3,9 +3,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const data = require('./data/db.js')
+const data = require('./data/db.json')
 
-let drilledData = data.todo
+let drilledData = data
 app.use(cors({
     origin: 'http://localhost:3000'
   }));

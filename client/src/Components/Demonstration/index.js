@@ -201,7 +201,7 @@ function Demonstration() {
         <section className="demonstration-container">
             <h2> ToDo API - Returned Data </h2>
             <form className="search-container" onSubmit={handleFormSubmit}>
-                <div class="input-group mb-3 d-flex">
+                <div className="input-group mb-3 d-flex">
                     <span className="input-group-text" id="basic-addon1">Task Name:</span>
                     <input type='text'
                         className="form-control"
