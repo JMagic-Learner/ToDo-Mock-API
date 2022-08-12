@@ -11,7 +11,7 @@ app.use(cors({
   }));
 app.use(express.json());
 
-
+require('dotenv').config();
 
 
 app.get('/api/todos', (req,res) => {
@@ -90,15 +90,15 @@ app.put('/api/todos/:id/', (req,res)=> {
     
 })
 
-app.get('*', (req, res) => {
-    if (req) {
-      console.log("A request has been sent");
-    }
-    if (res) {
-      console.log("A response has been generated");
-    }
-    res.sendFile(path.join(__dirname, '../client/build'));
-  });
+// app.get('*', (req, res) => {
+//     if (req) {
+//       console.log("A request has been sent");
+//     }
+//     if (res) {
+//       console.log("A response has been generated");
+//     }
+//     res.sendFile(path.join(__dirname, '../client/build'));
+//   });
 
 
 // ENV variables 
