@@ -33,6 +33,7 @@ function Demonstration() {
         APIRequest().then((data) => {
             if (data) {
                 console.log("We have retrieved data from the APIRequest")
+                console.log(data)
                 setFufilled(data)
             }
         })
