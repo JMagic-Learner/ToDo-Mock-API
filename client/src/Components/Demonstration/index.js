@@ -1,15 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import APIRequest from '../../API/fetch';
 
 function Demonstration() {
 
-    // const myModal = document.getElementById('myModal')
-    // const myInput = document.getElementById('myInput')
-
-    // myModal.addEventListener('shown.bs.modal', () => {
-    // myInput.focus()
-    // })
-    // This is the where the API Data will be stored.
     const [fufilled, setFufilled] = useState([])
     const [HTTPMethod, setHTTPMethod] = useState("CLEAR");
 
@@ -47,10 +41,6 @@ function Demonstration() {
         }
     }, [fufilled])
 
-    useEffect(() => {
-        console.log("A HTTPMethod has been specified")
-
-    }, [HTTPMethod])
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -105,21 +95,26 @@ function Demonstration() {
 
     const actionDELETE = (event) => {
         console.log("DELETE")
-        let idTarget = event.target.value
+        let idTarget = event.target.id
         setDeleteID(idTarget);
         setHTTPMethod("DELETE");
     }
 
     const actionPUT = (event) => {
         console.log("PUT")
-        let idTarget = event.target.value
+        let idTarget = event.target.id
+        let nameTarget = event.target.name
+        let timeTarget = event.target.value
+        console.log(idTarget,nameTarget,timeTarget)
+        setUpdateName(nameTarget)
         setUpdate(idTarget);
+        setUpdateTime(timeTarget);
         setHTTPMethod("PUT");
     }
 
     const actionGET = (event) => {
         console.log("GET")
-        let idTarget = event.target.value
+        let idTarget = event.target.id
         setSearchID(idTarget);
         if (idTarget >= fufilled.length) {
             setHTTPMethod("UNKNOWNID");
@@ -213,7 +208,7 @@ function Demonstration() {
                     </input>
                     <button className="btn btn-primary"
                         type="submit"
-                        value={searchID}
+                        id={searchID}
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
                         onClick={actionGET}> SEARCH BY ID </button>
@@ -228,13 +223,13 @@ function Demonstration() {
                     onClick={actionPOST}>
                     Add new Task
                 </button>
-                <button type="submit"
+                {/* <button type="submit"
                     className="btn btn-primary CRUD-Button"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                     onClick={actionPUT}>
                     Edit a Task
-                </button>
+                </button> */}
             </div>
             <br></br>
             <section className='todo-container'>
@@ -249,10 +244,12 @@ function Demonstration() {
                                 <p className="card-text"> {item.timeNeeded} minutes is needed to complete this task</p>
                                 <div className="CRUD-Operations" >
                                     <form onSubmit={handleFormSubmit}>
-                                        <button className="btn btn-secondary CRUD-Delete" value={item.id} type="submit" onClick={actionDELETE}> DELETE </button>
+                                        <button className="btn btn-secondary CRUD-Delete" id={item.id} type="submit" onClick={actionDELETE}> DELETE </button>
                                     </form>
                                     <button className="btn btn-secondary CRUD-Edit"
-                                        value={item.id}
+                                        id={item.id}
+                                        name={item.name}
+                                        value={item.timeNeeded}
                                         type="submit"
                                         onClick={actionPUT}
                                         data-bs-toggle="modal"
@@ -277,14 +274,12 @@ function Demonstration() {
                             {HTTPMethod === "POST" && (
                                 <h5 className="modal-title" id="exampleModalLabel">Add a new task</h5>
                             )}
-
                             {HTTPMethod === "PUT" && (
                                 <h5 className="modal-title" id="exampleModalLabel">Edit a specific task</h5>
                             )}
                             {HTTPMethod === "GET" && (
                                 <h5 className="modal-title" id="exampleModalLabel">Search results</h5>
                             )}
-
 
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -377,7 +372,6 @@ function Demonstration() {
                                                         className="form-control"
                                                         aria-label="TaskName"
                                                         aria-describedby="basic-addon1"
-
                                                         value={item.id}
                                                     >
                                                     </input>
@@ -404,7 +398,6 @@ function Demonstration() {
                                                         className="form-control"
                                                         aria-label="TaskName"
                                                         aria-describedby="basic-addon1"
-
                                                         value={item.timeNeeded}
                                                     >
                                                     </input>
@@ -420,7 +413,7 @@ function Demonstration() {
                             {HTTPMethod !== "GET" && (
                                 <div>
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-                                    <button type="submit" className="btn btn-primary">Save changes</button>
+                                    <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                                 </div>
                             )}
                         </div>
