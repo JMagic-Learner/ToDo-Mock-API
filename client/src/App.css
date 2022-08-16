@@ -89,7 +89,6 @@
   transition: background-color ease-in-out 0.5s;
 }
 
-
 .todo-items{
   width:350px;
   background-color:#e4e4e4;
@@ -107,11 +106,16 @@
   background-color:#282c34;
   margin:auto;
 }
+
+.column-name{
+  width:25%;
+}
+
 .dependency-HTMLoutput{
   display:flex;
-  width:70%;
+  width:80%;
+  margin:auto;
   margin-top:1%;
-  margin-left:15%;
   background-color: #e4e4e4;
   transition: background-color ease-out 0.5s;
 }
@@ -121,15 +125,6 @@
   transition: background-color ease-in 0.5s;
 }
 
-.dependency-short{
-  width:25%;
-  margin-top:1%;
-}
-
-.dependency-description{
-  margin-top:3%;
-  margin-left:3%;
-}
           
 /* EXPLANATION */ 
 .text-block{
@@ -151,3 +146,5 @@
   width:125px;
   transition: background-color ease-in 0.5s;
 }
+
+/* Bootstrap Navbar */

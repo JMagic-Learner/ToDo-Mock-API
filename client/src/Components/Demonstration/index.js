@@ -27,19 +27,10 @@ function Demonstration() {
         APIRequest().then((data) => {
             if (data) {
                 console.log("We have retrieved data from the APIRequest")
-                console.log(data)
                 setFufilled(data)
             }
         })
     }, [])
-
-    useEffect(() => {
-        if (fufilled.length == 0) {
-            console.log("The APi has not fufilled it's promise yet")
-        } else {
-            console.log("The API has fullfilled it's promise, and has been incorporated into the state of the Demonstration component")
-        }
-    }, [fufilled])
 
 
     const handleChange = (event) => {
@@ -67,8 +58,6 @@ function Demonstration() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
-
         if (HTTPMethod === "POST") {
             console.log("you have attempted to submit an article");
             postRequest()
@@ -85,7 +74,6 @@ function Demonstration() {
             console.log("You are attempting to retrieve a ToDo Task by ID")
             getRequest()
         }
-
     }
 
     const actionPOST = () => {
@@ -124,6 +112,8 @@ function Demonstration() {
 
     }
 
+    // HTTP headers let the client and the server pass additional information with an HTTP request or response. 
+    // An HTTP header consists of its case-insensitive name followed by a colon (:), then by its value
     const postRequest = async () => {
         console.log("TASKNAME: ", taskName, "TIME: ", time, " HTTPMethod: ", HTTPMethod)
         await fetch('http://localhost:4000/api/todos', {
@@ -193,7 +183,7 @@ function Demonstration() {
     }
 
     return (
-        <section className="demonstration-container">
+        <section>
             <h2> ToDo API - Returned Data </h2>
             <form className="search-container" onSubmit={handleFormSubmit}>
                 <div className="input-group mb-3 d-flex">
@@ -214,15 +204,14 @@ function Demonstration() {
                         onClick={actionGET}> SEARCH BY ID </button>
                 </div>
             </form>
-
-            <div className="CRUD-Operations" >
-                <button type="submit"
+            <div className="CRUD-Operations" > 
+                 <button type="submit"
                     className="btn btn-primary CRUD-Button"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                     onClick={actionPOST}>
                     Add new Task
-                </button>
+                </button> 
                 {/* <button type="submit"
                     className="btn btn-primary CRUD-Button"
                     data-bs-toggle="modal"
@@ -230,10 +219,9 @@ function Demonstration() {
                     onClick={actionPUT}>
                     Edit a Task
                 </button> */}
-            </div>
+             </div>
             <br></br>
             <section className='todo-container'>
-
                 {fufilled.map((item) => {
                     return (
 
@@ -261,10 +249,7 @@ function Demonstration() {
 
                     )
                 })}
-
             </section>
-
-
             <form className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onSubmit={handleFormSubmit}>
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -420,10 +405,6 @@ function Demonstration() {
                     </div>
                 </div>
             </form>
-
-
-
-
         </section>
     )
 }

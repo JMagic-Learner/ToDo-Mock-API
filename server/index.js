@@ -1,19 +1,26 @@
+// The real difference between require('express') and express() is that require('express') allows you to have access to any public functions or properties exposed by module.exports.
 
+// The express() syntax is the equivalent of saying new express(). It creates a new instance of express that you can then assign to a variable and interact with.
 const express = require('express');
-const app = express();
+const app = express()
 const path = require('path');
 const cors = require('cors');
 const data = require('./data/db.json')
 
 let drilledData = data
+// cors is used to prevent Cross-Origin Resource Sharing (CORS) errors.
+//For security reasons, browsers restrict cross-origin HTTP requests initiated from scripts. For example, XMLHttpRequest and the Fetch API follow the same-origin policy.
+// Same origin Policy prevents cross site scripting. We woulnd't want a "trusted site" to inject their javascript
 app.use(cors({
     origin: 'http://localhost:3000'
   }));
+
+//urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays.
 app.use(express.urlencoded( {extended: true} ))
+// express.json is a method to take the incoming request object and convert it to JSON format/ JAvascript Object Notation
 app.use(express.json());
 
-require('dotenv').config();
-
+// require('dotenv').config();
 
 app.get('/api/todos', (req,res) => {
     console.log("We are attempting to retrieve all ToDo")
@@ -51,8 +58,8 @@ app.get('/api/todos/:id/', (req,res)=> {
 
 app.delete('/api/todos/:id/', (req,res)=> {
     
-
-    if (drilledData.filter( item => item.id !== parseInt(req.params.id))) {
+   
+    if (drilledData.filter( item => item.id === parseInt(req.params.id))) {
     console.log("We are attempting to delete the value of todo by id")
     drilledData= drilledData.filter( item => item.id !== parseInt(req.params.id));
     // THIS FOLLOWING CODE IS REQUIRED TO ADJUST THE ID, EVERY DELETE
@@ -82,12 +89,13 @@ app.put('/api/todos/:id/', (req,res)=> {
             }
         })
         res.send(drilledData)
-    }
-
-    if (!req.params.id){
-        res.status(400).send("ID is not specified")
+    } else {
+        res.status(400).send("ID is not valid")
         return;
     }
+    
+
+        
     
 })
 

@@ -12,72 +12,74 @@ import Diagram7 from '../../Assets/ExpressAPIDiagram7.jpg'
 import Diagram8 from '../../Assets/ExpressAPIDiagram8.jpg'
 import Diagram9 from '../../Assets/ExpressAPIDiagram9.jpg'
 function Explanation() {
-    return(
-        <section className="explanation-container">
-            <h2> EXPLAINING EXPRESS </h2>
-           
+    return( 
+    
+    <section>
+            <h2> BACK TO BASICS: HTTP REQUESTS </h2>
             <section className="dependency-content">
-            <h3 className="text-white"> BACK TO BASICS: HTTP REQUESTS </h3>
-            {/* <section className="dependency-content"> */}
                 <img src={Diagram1}/>
-                <div className="text-block text-white text-justify" >
+                <div className="dependency-HTMLoutput border rounded" >
                 <p> Before we begin explaining Express, we need to go over the basic relationship between a client and server, and how a request is made
                 The above diagram showcases the end-client and the server. The End client is being genearted by an REACT application, while the server is being generated on LocalHost:4000 via Express.
                 For this demonstration, we are able to simultenously run both client and server via a node package known as concurrently.</p>
                 </div>
-            </section>
-          
-            <section className="dependency-content">
-            <h3 className="text-white"> HTTP REQUEST METHODS </h3>
-            <img src={Diagram2}/>
-                <div className="text-block text-white text-justify" >
-                <p> There are four primary HTTP Methods: POST, GET, PUT, DELETE. There are other HTTP methods showcased below.
+
+           
+           
+                <h2 className="text-white"> HTTP REQUEST METHODS </h2>
+                    <img src={Diagram2}/>
+                <div className="dependency-HTMLoutput border rounded text-justify" >
+                <p> There are four primary HTTP Methods: POST, GET, PUT, DELETE. There are other HTTP methods showcased above
                 These HTTP request methods correspond to CRUD operations( CREATE , READ, UPDATE, DELETE). This demonstration will go over the POST, GET, PUT, DELETE.
                 </p>
                 </div>
-            </section>
             
-            <section className="dependency-content">
-            <h3 className="text-white"> THE EXPRESS SERVER: REQUEST PROCESS </h3>
+                <h2 className="text-white"> WHAT IS EXPRESS </h2>
+                <div className="dependency-HTMLoutput border rounded text-justify" >
+                <p> Express is a unopinionated Node framework. It's core design philosophy is to be a minimalist Javascript based framework, to help developers have the freedom of choice in building servside logic and routing.
+                    While very basic, Express allows extensive use of middleware. The most common is express.json() and urlencoded.
+
+                </p>
+                </div>
+           
+                
+                
+            
+            
+           
+                <h2 className="text-white"> THE EXPRESS SERVER: REQUEST PROCESS </h2>
             <img src={Diagram3}/>
                 
-                <div className="text-block text-white text-justify" >
-                <p> Whenever a request is sent by the client, it is sent in a string format.</p>
-                <p> The reason why is partially explained in in the HTTP accronym, HyperText Transfer Protocol, aka, it is litearlly a text-based protocol </p>
-                <p>
+                <div className="dependency-HTMLoutput border rounded text-justify" >
+                <p> Whenever a request is sent by the client, it is sent in a string format.
+         The reason why is partially explained in in the HTTP accronym, HyperText Transfer Protocol, aka, it is litearlly a text-based protocol
+                
                 However if you have prior experience with APIs, you know that the data sent back to the client is in JSON format ( JavaScript Object Notation )
                  You might be wondering how Express manages to received a request from the end-client, and parses it into JSON format. This is later explained in THE EXPRESS SERVER: SETTING UP</p>
                 </div>
-            </section>
+           
             
-              <blockquote className="blockquote text-left">
+              {/* <blockquote className="blockquote text-left">
                 <p className="mb-0"> Express defines the server endpoint we are sending client requests to (Localhost:4000 etc)</p>
                 <p className="mb-0"> Express defines how we parse incoming requests</p>
                 <p className="mb-0"> Express defines how to process incoming requests (Detect GET,POST,PUT,DELETE), and what data is returned</p>
-              </blockquote>
+              </blockquote> */}
 
-            <section className="dependency-content">
-                <h3 className="text-white"> THE EXPRESS SERVER: DEFINING DATA SET</h3>
+           
+                <h2 className="text-white"> THE EXPRESS SERVER: DEFINING DATA SET</h2>
                 <img src={Diagram4}/>
-                <div className="text-block text-white text-justify" >
-                <p> In our server file directory, we created a db.js file. This is a static file for right now. You can also configure a database via config.js to load data from there.
+                <div className="dependency-HTMLoutput border rounded " >
+                <p> In our server file directory, we created a db.json file. This is a static file for right now. You can also configure a database via config.js to load data from there.
                  Becuase this is a static data-set served from our server.js, every time you use `npm run start`, a new instance of that data would be loaded.</p>   
                 </div>
-            </section>
+           
 
-            <section className="dependency-content">
-            <h3 className="text-white"> THE EXPRESS SERVER: REQUIRED MODULES</h3>
-            <img src={Diagram5} />
-            <div className="text-block text-white" >
-                <p> * See Dependencies for explanation of each requirement * </p>
-            </div>
-            </section>
-                
-            <section className="dependency-content">
-            <h3 className="text-white"> THE EXPRESS SERVER: SETTING UP</h3>
+            
+                <h2 className="text-white"> THE EXPRESS SERVER: SETTING UP</h2>
+            {/* <img src={Diagram5} />       */}
             <img src={Diagram6} />
             
-                <div className="text-block text-white text-left" >
+                <div className="dependency-HTMLoutput border rounded " >
                 <ol> 
                     <li> First we drill into 'data' for ease of access into our key-value pairs; The reason why we use LET is to allow reassignment once we begin modifying the data </li>
                     <li> Second, we designate our localhost:3000 (REACT Application) as an approved origin, to prevent any CORS errors </li>
@@ -85,13 +87,11 @@ function Explanation() {
                           Before Express 4.+, Express was using something called body-parser to conduct this conversion. Now, Express has it's own built in parser </li>
                 </ol>    
                 </div>
-            </section>
+            {/* </section> */}
 
-            <section className="dependency-content">
-            <h3 className="text-white"> THE EXPRESS SERVER: WHY JSON?</h3>
-                <div className="text-block text-white text-left" >
-                <p> Now you might be wondering, why in the world we need JSON to be returned?</p>
-                <p> With JSON format, we can....</p>
+            {/* <section className="dependency-content"> */}
+            <h2 className="text-white"> THE EXPRESS SERVER: WHY JSON?</h2>
+                <div className="dependency-HTMLoutput border rounded " >
                 <ol>
                     <li> Encode Numbers, Strings, Arrays, Objects ,`null`...</li>
                     <li> Represent empty arrays and objects easily</li>
@@ -101,12 +101,12 @@ function Explanation() {
                     <li> Parse JSON in a multitude of coding languages. Programming languages either have JSON support built in natively. If not, they rely on a library to help PARSE</li>
                 </ol>
                 </div>
-            </section>
+            {/* </section> */}
                 
-            <section className="dependency-content">
-            <h3 className="text-white"> THE EXPRESS SERVER: DEFINE HTTP METHODS</h3>
+            {/* <section className="dependency-content"> */}
+            <h2 className="text-white"> THE EXPRESS SERVER: DEFINE HTTP METHODS</h2>
             <img src={Diagram7} />
-            <div className="text-block text-white text-left" >
+            <div className="dependency-HTMLoutput border rounded " >
                  <p> 
                     We begin to define HTTP methods and how we process incoming requests.
                     Lines 25 - 28 for example, define the GET request. 
@@ -116,7 +116,7 @@ function Explanation() {
                 </p>
             </div>
            
-            <div className="text-block text-white text-left" >
+            <div className="dependency-HTMLoutput border rounded " >
                  <p> 
                     The post method for example, defines the endpoint URL, defines a request (req) and a response (res) as arguments. 
                     A request is defined by the end-client logic. req.body corresponds to a key-value pair inside the request object.
@@ -126,8 +126,7 @@ function Explanation() {
             <img src={Diagram9} />
             </section>  
         </section>
-       
-    )
-}
+    )}
+
 
 export default Explanation

@@ -9,8 +9,6 @@ import Demonstration from './Components/Demonstration';
 import Navigation from './Components/Navigation'
 
 // PAGES
-import Home from './Pages/Home';
-import Demo from './Pages/Demo';
 import Explanation from './Pages/Explanation';
 import Dependency from './Pages/Dependency';
 
@@ -20,7 +18,7 @@ function App() {
       <BrowserRouter>
       <Navigation/>
       <Routes>
-            <Route exact path="/" element={<Demo/>}/>
+            <Route exact path="/" element={  <Demonstration/>}/>
             <Route exact path="/explanation" element={<Explanation />}/>
             <Route exact path="/dependency" element={<Dependency/>}/>
        </Routes>

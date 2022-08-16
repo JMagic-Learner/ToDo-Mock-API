@@ -15,17 +15,17 @@ function Dependency() {
         {
             name: "@testing-library/jest-dom",
             version: "5.16.5",
-            description: "A node package bundled with npx create-react-app. This particular package concerns spying on events."
+            description: "This particular package concerns spying on events."
         },
         {
             name: "@testing-library/react",
             version: "13.3.0",
-            description: "A node package bundled with npx create-react-app. This particular package concerns testing methods regarding REACT components."
+            description: " This particular package concerns testing methods regarding REACT components."
         },
         {
             name: "@testing-library/user-event",
             version: "13.5.0",
-            description: "A node package bundled with npx create-react-app. This particular package concerns testing methods regarding REACT components."
+            description: " This particular package concerns testing methods regarding REACT components."
         },
         {
             name: "http",
@@ -50,7 +50,7 @@ function Dependency() {
         {
             name: "react-scripts",
             version: "5.0.1",
-            description: "NPM package that designates default scripts such as  `start`: `react-scripts start`. These defualt scripts are packaged along in npx create-react-app"
+            description: "NPM package that designates default scripts such as  `start`: `react-scripts start`."
         },
         {
             name: "web-vitals" ,
@@ -80,66 +80,47 @@ function Dependency() {
     ]
 
     return(
-        <section className="dependency-container">
-            <section className="dependency-block">
-                <h2> ROOT DEPENDENCIES </h2>
+        <section>
+          
+                <h2> DEPENDENCIES </h2>
                 <section className="dependency-content">
+                   
+                <h2 className="text-white"> Root </h2>
                     {dependenciesRoot.map((item)=>{
                         return(
                             
                             <div className="dependency-HTMLoutput border rounded">
-                                <section className="dependency-short">
-                                    <p> Name: {item.name} </p>
-                                    <p> Version: {item.version} </p>
-                                </section>
-                                <section className="dependency-description">
-                                     <p> {item.description} </p>
-                                </section>
+                               
+                                    <th className="column-name"> Name: {item.name}   </th>
+                               
+                                    <th className="column-description"> {item.description} </th>
+                                
                             </div>
                             
                         )
                     })}
-                </section>
-            </section>
-            <section className="dependency-block">
-                <h2> CLIENT DEPENDENCIES </h2>
-                <section className="dependency-content">
+                     <h2 className="text-white"> Client </h2>
                     {dependenciesClient.map((item)=>{
                         return(
-                            
-                            <div className="dependency-HTMLoutput border rounded">
-                                <section className="dependency-short">
-                                    <p> Name: {item.name} </p>
-                                    <p> Version: {item.version} </p>
-                                </section>
-                                <section className="dependency-description">
-                                     <p> {item.description} </p>
-                                </section>
-                            </div>
-                            
-                        )
-                    })}
-            </section>
-            </section>
-            <section className="dependency-block">
-                <h2> SERVER DEPENDENCIES </h2>
-                <section className="dependency-content">
-                    {dependenciesServer.map((item)=>{
+                         <tr className="dependency-HTMLoutput border rounded">
+                           
+                                    <th className="column-name"> Name: {item.name}   </th>
+                                   
+                                    <th className="column-description"> {item.description} </th>
+                               
+                        </tr>
+                    )})}
+                    <h2 className="text-white"> Server </h2>
+                     {dependenciesServer.map((item)=>{
                         return(
-                            
-                            <div className="dependency-HTMLoutput border rounded">
-                                <section className="dependency-short">
-                                    <p> Name: {item.name} </p>
-                                    <p> Version: {item.version} </p>
-                                </section>
-                                <section className="dependency-description">
-                                     <p> {item.description} </p>
-                                </section>
-                            </div>
-                            
-                        )
-                    })}
-            </section>
+                        <div className="dependency-HTMLoutput border rounded">
+                           
+                                    <th className="column-name"> Name: {item.name}   </th>
+                                    
+                                    <th className="column-description"> {item.description} </th>
+                        </div>
+                    )})}
+             
             </section>
         </section>
     )
